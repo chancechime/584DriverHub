@@ -10,7 +10,7 @@ As the primary assignment for this class, you will build an advanced Web applica
 - **Model-View-Controller (MVC)**: Ensure your server follows the MVC pattern.
 - **Object-Relational Mapping (ORM)**: Your application should include at least two tables with a one-to-many relationship between them using Entity Framework Core.
 - **Authentication**: Implement Google SSO via Firebase Authentication and Duo for Multi-Factor Authentication.
-- **Deployment**: Deploy the frontend using Firebase Hosting and the backend using AWS.
+- **Deployment**: Deploy the front end using Firebase Hosting and the back end using AWS.
 
 Fulfilling these requirements will make a B grade.
 
@@ -26,21 +26,4 @@ Other ways to achieve an A grade are the following:
 
 ## Development Stack
 
-We are going to build this application throughout the class. The server side requires ASP.NET/C#. I will use and recommend Angular on the client; however, you can use React on the client as well.
-
-## Getting Started
-
-To get started with the project, follow these steps:
-
-1. Set up your development environment with ASP.NET/C# for the server side.
-2. Choose either Angular or React for the client side and set up the environment accordingly.
-3. Begin implementing the required components listed above.
-4. Add additional components to aim for an A grade.
-
-## Deployment
-
-Instructions for deploying your application will be provided later in the course.
-
-## Contact
-
-For any questions or clarifications, please contact the course instructor.
+The server side requires ASP.NET/C#. I will use Angular on the client. The Database using Azure SQL Database
