@@ -25,6 +25,9 @@ obj/
 .vs/
 *.code-workspace
 
+# DataGrip
+.idea/
+
 # Logs
 *.log
 
