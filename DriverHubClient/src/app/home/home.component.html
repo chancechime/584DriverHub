@@ -1,0 +1,66 @@
+<div class="container">
+    <header>
+        <h1>Welcome to the COMP 584 Project Documentation!</h1>
+        <p>Join us as we race through the exciting features of our project!</p>
+    </header>
+    
+    <div class="slideshow-container">
+        <div class="slideshow drivers">
+            <h2>Meet the Drivers!</h2>
+            <!-- Placeholder for Driver Images -->
+            <img src="F1 2024 Season Drivers/Lewis_Hamilton_44.png" alt="Lewis Hamilton" class="slide" />
+            <img src="F1 2024 Season Drivers/Max_Verstappen_1.png" alt="Max Verstappen" class="slide" />
+            <img src="F1 2024 Season Drivers/Lando_Norris_4.png" alt="Lando Norris" class="slide" />
+        </div>
+        <span style="margin: 0 0.5em;"></span>
+        <div class="content">
+            <h1>Project Overview</h1>
+            <h2>1. Server-side (ASP.NET/C#)</h2>
+            <ul>
+                <li>Use <a href="https://dotnet.microsoft.com/apps/aspnet" style="text-decoration: none">ASP.NET</a> Core with MVC architecture.</li>
+                <li>Set up two models in the Azure database with a one-to-many relationship using Entity Framework Core (ORM).</li>
+                <li>Create controllers to manage requests for these models.</li>
+            </ul>
+
+            <h2>2. Client-side (Angular)</h2>
+            <ul>
+                <li>Build a Single Page Application (SPA) using Angular.</li>
+                <li>Use services to communicate with your <a href="https://dotnet.microsoft.com/apps/aspnet" style="text-decoration: none">ASP.NET</a> API.</li>
+            </ul>
+        </div>
+        <span style="margin: 0 0.5em;"></span>
+        <div class="slideshow cars">
+            <h2>Check Out the Cars!</h2>
+            <img src="F1 2024 Season Cars/Mercedes-AMG_W15.png" alt="Car 1" class="slide" />
+            <img src="F1 2024 Season Cars/Red_Bull_RB20.png" alt="Car 2" class="slide" />
+            <img src="F1 2024 Season Cars/McLaren_MCL38.png" alt="Car 3" class="slide" />
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let currentIndex = 0;
+        const drivers = document.querySelectorAll('.drivers .slide');
+        const cars = document.querySelectorAll('.cars .slide');
+
+        function showSlides() {
+            // Hide all slides
+            drivers.forEach(slide => slide.style.display = 'none');
+            cars.forEach(slide => slide.style.display = 'none');
+            
+            // Show the current slide
+            drivers[currentIndex].style.display = 'block';
+            cars[currentIndex].style.display = 'block';
+
+            // Update the index for the next slide
+            currentIndex = (currentIndex + 1) % drivers.length;
+
+            // Change slide every 3 seconds
+            setTimeout(showSlides, 3000);
+        }
+
+        // Start the slideshow
+        showSlides();
+    });
+</script>

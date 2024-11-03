@@ -1,0 +1,23 @@
+<h1 style="text-align: center;">Drivers</h1>
+<table class="table table-striped" aria-labelledby="tableLabel">
+    <thead>
+        <tr>
+            <th (click)="sort('abbreivation')">Abbr.</th>
+            <th (click)="sort('driverName')">Driver</th>
+            <th (click)="sort('team')">Team</th>
+            <th (click)="sort('points')">Points</th>
+            <th (click)="sort('worldChampionships')">World Championships</th>
+        </tr>
+    </thead>
+    <tbody>
+    @for (driver of drivers; track driver.id) {
+    <tr (click)="navToDriverDetails(driver.id)">
+      <td>{{ driver.abbreivation }}</td>
+      <td>{{ driver.driverNumber }} || {{ driver.driverName }}</td>
+      <td>{{ driver.team }}</td>
+      <td>{{ driver.points }}</td>
+      <td>{{ driver.worldChampionships }}</td>
+    </tr>
+    }
+    </tbody>
+</table>

@@ -58,3 +58,8 @@ Besides, there exist all race results of 2013-2018 seasons right now, contained 
 ------------
 
 [Formula 1 Datasets Github | oUpperCase78](https://github.com/toUpperCase78/formula1-datasets)
+
+------------
+
+# *Chance Notes*
+This folder represents all the data I pulled from the repository above and available for use to use for my **Driver Hub** Project.
