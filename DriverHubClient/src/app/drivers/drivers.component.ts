@@ -1,27 +1,34 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit, TrackByFunction } from '@angular/core';
+import { RouterLink, RouterModule } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { Driver } from './drivers';
 import { MockDriverService } from './drivers';
 import { routes } from '../app.routes';
+import { NgFor } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-drivers',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, NgFor, RouterModule],
   templateUrl: './drivers.component.html',
-  styleUrl: './drivers.component.scss'
+  styleUrl: './drivers.component.scss',
 })
 export class DriversComponent implements OnInit {
   public drivers: Driver[] = [];
-  title = 'driverhubserver.client';
+  public driverDetailsLink: string[] = [];
+  public title = 'driverhubserver.client';
   private sortAscending: boolean = true;
   private lastSortedColumn: string = '';
-  driverDetailsLink: string[] = [];
+  public trackByDriverId: TrackByFunction<Driver> = (index, driver) => driver.id;
 
-  constructor(private http: HttpClient, private mockDriverService: MockDriverService) {}
+  constructor(
+    private http: HttpClient,
+    private mockDriverService: MockDriverService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.mockDriverService.getDrivers().subscribe((data: Driver[]) => {
@@ -54,6 +61,6 @@ export class DriversComponent implements OnInit {
   }
 
   navToDriverDetails(id: number) {
-    this.driverDetailsLink = ['/driver-details', id.toString()];
+    this.router.navigate(['/driverdetails', id]);
   }
 }

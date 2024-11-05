@@ -1,4 +1,5 @@
-using DriverHub.Data;
+using DriverHubServer.Server;
+using DriverHubDatabase;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.AspNetCore.Authentication.BearerToken;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -15,19 +16,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<DriverHub>(
+builder.Services.AddDbContext<DriverHubDatabase>(
     (options) =>
     {
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
     });
 
 builder.Services.AddIdentity<AppUser, IdentityRole>() // function that adds identity dependency injection.
-    .AddEntityFrameworkStores<ElmosworldContext>();
-
-//Depencency Injections creates the object
-// Scoped -> needs during http request
-// Transient
-// Singleton -> created Once and For all
+    .AddEntityFrameworkStores<DriverHubDatabase>(); // function that adds the entity framework store to the identity.
 
 builder.Services.AddScoped<JwtHandler>();
 

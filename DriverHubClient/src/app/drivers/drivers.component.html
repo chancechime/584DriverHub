@@ -10,14 +10,12 @@
         </tr>
     </thead>
     <tbody>
-    @for (driver of drivers; track driver.id) {
-    <tr (click)="navToDriverDetails(driver.id)">
+    <tr *ngFor="let driver of drivers; trackBy: trackByDriverId" (click)="navToDriverDetails(driver.id)" style="cursor: pointer;">
       <td>{{ driver.abbreivation }}</td>
       <td>{{ driver.driverNumber }} || {{ driver.driverName }}</td>
       <td>{{ driver.team }}</td>
       <td>{{ driver.points }}</td>
       <td>{{ driver.worldChampionships }}</td>
     </tr>
-    }
     </tbody>
 </table>

@@ -1,11 +1,11 @@
 <div class="container">
     <header>
         <h1>Welcome to the COMP 584 Project Documentation!</h1>
-        <p>Join us as we race through the exciting features of our project!</p>
+        <p>Join us as we race through the exciting features of our project!</p> 
     </header>
     
     <div class="slideshow-container">
-        <div class="slideshow drivers">
+        <div *ngIf="isBrowser" class="slideshow drivers">
             <h2>Meet the Drivers!</h2>
             <!-- Placeholder for Driver Images -->
             <img src="F1 2024 Season Drivers/Lewis_Hamilton_44.png" alt="Lewis Hamilton" class="slide" />
@@ -29,38 +29,10 @@
             </ul>
         </div>
         <span style="margin: 0 0.5em;"></span>
-        <div class="slideshow cars">
+        <div *ngIf="isBrowser" class="slideshow cars">
             <h2>Check Out the Cars!</h2>
-            <img src="F1 2024 Season Cars/Mercedes-AMG_W15.png" alt="Car 1" class="slide" />
-            <img src="F1 2024 Season Cars/Red_Bull_RB20.png" alt="Car 2" class="slide" />
-            <img src="F1 2024 Season Cars/McLaren_MCL38.png" alt="Car 3" class="slide" />
+            <div class="slide"><img src="F1 2024 Season Cars/Mercedes-AMG_W15.png" alt="Mercedes W15"/></div>
+            <div class="slide"><img src="F1 2024 Season Cars/Red_Bull_RB20.png" alt="Red Bull RB20"/></div>
+            <div class="slide"><img src="F1 2024 Season Cars/McLaren_MCL38.png" alt="MCLaren MCL38"/></div>
         </div>
-    </div>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        let currentIndex = 0;
-        const drivers = document.querySelectorAll('.drivers .slide');
-        const cars = document.querySelectorAll('.cars .slide');
-
-        function showSlides() {
-            // Hide all slides
-            drivers.forEach(slide => slide.style.display = 'none');
-            cars.forEach(slide => slide.style.display = 'none');
-            
-            // Show the current slide
-            drivers[currentIndex].style.display = 'block';
-            cars[currentIndex].style.display = 'block';
-
-            // Update the index for the next slide
-            currentIndex = (currentIndex + 1) % drivers.length;
-
-            // Change slide every 3 seconds
-            setTimeout(showSlides, 3000);
-        }
-
-        // Start the slideshow
-        showSlides();
-    });
-</script>

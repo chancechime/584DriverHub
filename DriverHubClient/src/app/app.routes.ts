@@ -1,4 +1,5 @@
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { DriversComponent } from './drivers/drivers.component';
 import { RaceResultsComponent } from './race-results/race-results.component';
 import { FavoritesComponent } from './favorites/favorites.component';
@@ -11,6 +12,13 @@ export const routes: Routes = [
     { path: 'race-results', component: RaceResultsComponent },
     { path: 'favorites', component: FavoritesComponent },
     { path: 'home', component: HomeComponent },
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', redirectTo: '/drivers' }
 ];
+
+@NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+})
+
+export class AppRoutingModule { }

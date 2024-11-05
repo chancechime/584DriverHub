@@ -27,17 +27,16 @@
 
   .spin {
     animation: spin-pause 1.25s ease-in-out infinite;
-    animation-delay: 0.5s;
+    animation-delay: 0.2s;
   }
 
   @keyframes spin-pause {
     0% { transform: rotate(0deg); }
-    40% { transform: rotate(180deg); }
-    80% { transform: rotate(360deg); }
+    50% { transform: rotate(180); }
     100% { transform: rotate(360deg); }
   }
 
-  .spin {
-    animation: spin-pause 1.25s ease-in-out infinite;
-    animation-delay: 0.5s;
-  }
+  .spin:hover {
+    animation-play-state: paused;
+    filter: grayscale(100%);
+}
