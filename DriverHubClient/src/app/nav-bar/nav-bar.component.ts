@@ -8,7 +8,7 @@ import { MatDividerModule } from '@angular/material/divider';
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [RouterModule, MatToolbarModule, MatButtonModule, MatIconModule, MatDividerModule, RouterLink, RouterOutlet],
+  imports: [RouterModule, MatToolbarModule, MatButtonModule, MatIconModule, MatDividerModule, RouterLink],
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss']
 })

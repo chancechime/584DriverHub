@@ -5,7 +5,7 @@ import { isPlatformBrowser, CommonModule } from '@angular/common';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, RouterOutlet, RouterLink, CommonModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
