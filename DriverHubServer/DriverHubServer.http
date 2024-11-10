@@ -1,4 +1,4 @@
-@DriverHubServer_HostAddress = http://localhost:5270
+@DriverHubServer_HostAddress = http://localhost:5089
 
 GET {{DriverHubServer_HostAddress}}/weatherforecast/
 Accept: application/json

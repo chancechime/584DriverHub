@@ -1,4 +1,4 @@
-using DriverHubServer.Server;
+using DriverHubServer;
 using DriverHubDatabase;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.AspNetCore.Authentication.BearerToken;
@@ -16,14 +16,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<DriverHubDatabase>(
+builder.Services.AddDbContext<DriverHubDatabaseContext>(
     (options) =>
     {
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
     });
 
 builder.Services.AddIdentity<AppUser, IdentityRole>() // function that adds identity dependency injection.
-    .AddEntityFrameworkStores<DriverHubDatabase>(); // function that adds the entity framework store to the identity.
+    .AddEntityFrameworkStores<DriverHubDatabaseContext>(); // function that adds the entity framework store to the identity.
 
 builder.Services.AddScoped<JwtHandler>();
 

@@ -15,4 +15,5 @@ import { FavoritesComponent } from './favorites/favorites.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  title = 'DriverHubClient';
 }

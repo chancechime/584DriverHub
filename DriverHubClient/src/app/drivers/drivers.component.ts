@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, TrackByFunction } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -12,7 +11,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-drivers',
   standalone: true,
-  imports: [RouterLink, NgFor, RouterModule],
+  imports: [NgFor, RouterModule],
   templateUrl: './drivers.component.html',
   styleUrl: './drivers.component.scss',
 })
@@ -25,7 +24,6 @@ export class DriversComponent implements OnInit {
   public trackByDriverId: TrackByFunction<Driver> = (index, driver) => driver.id;
 
   constructor(
-    private http: HttpClient,
     private mockDriverService: MockDriverService,
     private router: Router
   ) {}

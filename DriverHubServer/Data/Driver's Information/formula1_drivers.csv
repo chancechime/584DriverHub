@@ -1,0 +1,109 @@
+Driver,Abbreviation,No,Team,Country,Podiums,Points,Grands Prix Entered,World Championships,Highest Race Finish,Highest Grid Position,Date of Birth,Place of Birth,Season Year
+Max Verstappen,VER,1,Red Bull Racing,Netherlands,98,2586.5,185,3,1(x54),1,30/09/1997,"Hasselt, Belgium",2023
+Sergio Perez,PER,11,Red Bull Racing,Mexico,35,1486,258,0,1(x6),1,26/01/1990,"Guadalajara, Mexico",2023
+Lewis Hamilton,HAM,44,Mercedes,United Kingdom,197,4639.5,332,7,1(x103),1,07/01/1985,"Stevenage, England",2023
+Fernando Alonso,ALO,14,Aston Martin,Spain,106,2267,380,2,1(x32),1,29/07/1981,"Oviedo, Spain",2023
+Charles Leclerc,LEC,16,Ferrari,Monaco,30,1074,125,0,1(x5),1,16/10/1997,"Monte Carlo, Monaco",2023
+Lando Norris,NOR,4,McLaren,United Kingdom,13,633,104,0,2(x7),1,13/11/1999,"Bristol, England",2023
+Carlos Sainz,SAI,55,Ferrari,Spain,18,982.5,185,0,1(x2),1,01/09/1994,"Madrid, Spain",2023
+George Russell,RUS,63,Mercedes,United Kingdom,11,469,104,0,1(x1),1,15/02/1998,"King's Lynn, England",2023
+Oscar Piastri,PIA,81,McLaren,Australia,2,97,22,0,2(x1),2,06/04/2001,"Melbourne, Victoria",2023
+Lance Stroll,STR,18,Aston Martin,Canada,3,268,143,0,3(x3),1,29/10/1998,"Montreal, Canada",2023
+Pierre Gasly,GAS,10,Alpine,France,4,394,130,0,1(x1),2,07/02/1996,"Rouen, France",2023
+Esteban Ocon,OCO,31,Alpine,France,3,422,133,0,1(x1),3,17/09/1996,"Evreux, Normandy",2023
+Alexander Albon,ALB,23,Williams,Thailand,2,228,81,0,3(x2),4,23/03/1996,"London, England",2023
+Yuki Tsunoda,TSU,22,AlphaTauri,Japan,0,61,66,0,4(x1),6,11/05/2000,"Sagamihara, Japan",2023
+Valtteri Bottas,BOT,77,Alfa Romeo,Finland,67,1797,222,0,1(x10),1,28/08/1989,"Nastola, Finland",2023
+Nico Hulkenberg,HUL,27,Haas F1 Team,Germany,0,530,206,0,4(x3),1,19/08/1987,"Emmerich am Rhein, Germany",2023
+Daniel Ricciardo,RIC,3,AlphaTauri,Australia,32,1317,239,0,1(x8),1,01/07/1989,"Perth, Australia",2023
+Guanyu Zhou,ZHO,24,Alfa Romeo,China,0,12,44,0,8(x1),5,30/05/1999,"Shanghai, China",2023
+Kevin Magnussen,MAG,20,Haas F1 Team,Denmark,1,186,164,0,2(x1),4,05/10/1992,"Roskilde, Denmark",2023
+Liam Lawson,LAW,40,AlphaTauri,New Zealand,0,2,5,0,9(x1),10,11/02/2002,"Hastings, New Zealand",2023
+Logan Sargeant,SAR,2,Williams,United States,0,1,22,0,10(x1),6,31/12/2000,"Fort Lauderdale, Florida",2023
+Nyck De Vries,DEV,21,AlphaTauri,Netherlands,0,2,11,0,9(x1),8,06/02/1995,"Uitwellingerga, Netherlands",2023
+Max Verstappen,VER,1,Red Bull Racing,Netherlands,77,2011.5,163,2,1(x35),1,30/09/1997,"Hasselt,Belgium",2022
+Charles Leclerc,LEC,16,Ferrari,Monaco,24,868,103,0,1(x5),1,16/10/1997,"Monte Carlo, Monaco",2022
+Sergio Perez,PER,11,Red Bull Racing,Mexico,26,1201,236,0,1(x4),1,26/01/1990,"Guadalajara, Mexico",2022
+George Russell,RUS,63,Mercedes,United Kingdom,9,294,82,0,1(x1),1,15/02/1998,"King's Lynn, England",2022
+Carlos Sainz,SAI,55,Ferrari,Spain,15,782.5,163,0,1(x1),1,01/09/1994,"Madrid, Spain",2022
+Lewis Hamilton,HAM,44,Mercedes,United Kingdom,191,4405.5,310,7,1(x103),1,07/01/1985,"Stevenage, England",2022
+Lando Norris,NOR,4,McLaren,United Kingdom,6,428,82,0,2(x1),1,13/11/1999,"Bristol, England",2022
+Esteban Ocon,OCO,31,Alpine,France,2,364,111,0,1(x1),3,17/09/1996,"Evreux, Normandy",2022
+Fernando Alonso,ALO,14,Alpine,Spain,98,2061,358,2,1(x32),1,29/07/1981,"Oviedo, Spain",2022
+Valtteri Bottas,BOT,77,Alfa Romeo,Finland,67,1787,200,0,1(x10),1,28/08/1989,"Nastola, Finland",2022
+Daniel Ricciardo,RIC,3,McLaren,Australia,32,1311,232,0,1(x8),1,01/07/1989,"Perth, Australia",2022
+Sebastian Vettel,VET,5,Aston Martin,Germany,122,3098,300,4,1(x53),1,03/07/1987,"Heppenheim, Germany",2022
+Kevin Magnussen,MAG,20,Haas F1 Team,Denmark,1,183,142,0,2(x1),4,05/10/1992,"Roskilde, Denmark",2022
+Pierre Gasly,GAS,10,AlphaTauri,France,3,332,108,0,1(x1),2,07/02/1996,"Rouen, France",2022
+Lance Stroll,STR,18,Aston Martin,Canada,3,194,122,0,3(x3),1,29/10/1998,"Montreal, Canada",2022
+Mick Schumacher,MSC,47,Haas F1 Team,Germany,0,12,43,0,6(x1),6,22/03/1999,"Vufflens-le-Chateau, Switzerland",2022
+Yuki Tsunoda,TSU,22,AlphaTauri,Japan,0,44,44,0,4(x1),7,11/05/2000,"Sagamihara, Japan",2022
+Guanyu Zhou,ZHO,24,Alfa Romeo,China,0,6,22,0,8(x1),9,30/05/1999,"Shanghai, China",2022
+Alexander Albon,ALB,23,Williams,Thailand,2,201,59,0,3(x2),4,23/03/1996,"London, England",2022
+Nicholas Latifi,LAT,6,Williams,Canada,0,9,61,0,7(x1),10,29/06/1995,"Montreal, Canada",2022
+Nyck De Vries,DEV,45,Williams,Netherlands,0,2,1,0,9(x1),8,06/02/1995,"Uitwellingerga, Netherlands",2022
+Nico Hulkenberg,HUL,27,Aston Martin,Germany,0,521,184,0,4(x3),1,19/08/1987,"Emmerich am Rhein, Germany",2022
+ewis Hamilton,HAM,44,Mercedes,United Kingdom,182,4165.5,288,7,1(x103),1,07/01/1985,"Stevenage, England",2021
+Valtteri Bottas,BOT,77,Mercedes,Finland,67,1738,178,0,1(x10),1,28/08/1989,"Nastola, Finland",2021
+Max Verstappen,VER,33,Red Bull Racing,Netherlands,60,1557.5,141,1,1(x20),1,30/09/1997,"Hasselt, Belgium",2021
+Sergio Perez,PER,11,Red Bull Racing,Mexico,15,896,214,0,1(x2),2,26/01/1990,"Guadalajara, Mexico",2021
+Charles Leclerc,LEC,16,Ferrari,Monaco,13,560,81,0,1(x2),1,16/10/1997,"Monte Carlo, Monaco",2021
+Carlos Sainz,SAI,55,Ferrari,Spain,6,536.5,141,0,2(x2),2,01/09/1994,"Madrid, Spain",2021
+Lando Norris,NOR,4,McLaren,United Kingdom,5,306,60,0,2(x1),1,13/11/1999,"Bristol, England",2021
+Daniel Ricciardo,RIC,3,McLaren,Australia,32,1274,210,0,1(x8),1,01/07/1989,"Perth, Australia",2021
+Esteban Ocon,OCO,31,Alpine,France,2,272,89,0,1(x1),3,17/09/1996,"Evreux, Normandy",2021
+Fernando Alonso,ALO,14,Alpine,Spain,98,1980,336,2,1(x32),1,29/07/1981,"Oviedo, Spain",2021
+Pierre Gasly,GAS,10,AlphaTauri,France,3,309,86,0,1(x1),2,07/02/1996,"Rouen, France",2021
+Yuki Tsunoda,TSU,22,AlphaTauri,Japan,0,32,22,0,4(x1),7,11/05/2000,"Sagamihara, Japan",2021
+Lance Stroll,STR,18,Aston Martin,Canada,3,176,100,0,3(x3),1,29/10/1998,"Montreal, Canada",2021
+Sebastian Vettel,VET,5,Aston Martin,Germany,122,3061,280,4,1(x53),1,03/07/1987,"Heppenheim, Germany",2021
+George Russell,RUS,63,Williams,United Kingdom,1,19,60,0,2(x1),2,15/02/1998,"King's Lynn, England",2021
+Nicholas Latifi,LAT,6,Williams,Canada,0,7,39,0,7(x1),10,29/06/1995,"Montreal, Canada",2021
+Kimi Raikkönen,RAI,7,Alfa Romeo,Finland,103,1873,352,1,1(x21),1,17/10/1979,"Espoo, Finland",2021
+Antonio Giovinazzi,GIO,99,Alfa Romeo,Italy,0,21,62,0,5(x1),7,14/12/1993,"Martina France, Italy",2021
+Mick Schumacher,MSC,47,Haas,Germany,0,0,22,0,12(x1),14,22/03/1999,"Vufflens-le-Chateau, Switzerland",2021
+Nikita Mazepin,MAZ,9,Haas,RAF,0,0,21,0,14(x1),15,02/03/1999,"Moscow, Russia",2021
+Robert Kubica,KUB,88,Alfa Romeo,Poland,12,274,99,0,1(x1),1,07/12/1984,"Krakow, Poland",2021
+Lewis Hamilton,HAM,44,Mercedes,United Kingdom,165,3778,266,7,1(x95),1,07/01/1985,"Stevenage, England",2020
+Valtteri Bottas,BOT,77,Mercedes,Finland,56,1512,157,0,1(x9),1,28/08/1989,"Nastola, Finland",2020
+Max Verstappen,VER,33,Red Bull Racing,Netherlands,42,1162,119,0,1(x10),1,30/09/1997,"Hasselt, Belgium",2020
+Sergio Perez,PER,11,Racing Point,Mexico,10,706,193,0,1(x1),3,26/01/1990,"Guadalajara, Mexico",2020
+Daniel Ricciardo,RIC,3,Renault,Australia,31,1159,188,0,1(x7),1,01/07/1989,"Perth, Australia",2020
+Carlos Sainz,SAI,55,McLaren,Spain,2,372,119,0,2(x1),3,01/09/1994,"Madrid, Spain",2020
+Alexander Albon,ALB,23,Red Bull Racing,Thailand,2,197,38,0,3(x2),4,23/03/1996,"London, England",2020
+Charles Leclerc,LEC,16,Ferrari,Monaco,12,401,59,0,1(x2),1,16/10/1997,"Monte Carlo, Monaco",2020
+Lando Norris,NOR,4,McLaren,United Kingdom,1,146,38,0,3(x1),3,13/11/1999,"Bristol, England",2020
+Pierre Gasly,GAS,10,AlphaTauri,France,2,199,64,0,1(x1),4,07/02/1996,"Rouen, France",2020
+Lance Stroll,STR,18,Racing Point,Canada,3,142,78,0,3(x3),1,29/10/1998,"Montreal, Canada",2020
+Esteban Ocon,OCO,31,Renault,France,1,198,67,0,2(x1),3,17/09/1996,"Evreux, Normandy",2020
+Sebastian Vettel,VET,5,Ferrari,Germany,121,3018,258,4,1(x53),1,03/07/1987,"Heppenheim, Germany",2020
+Daniil Kvyat,KVY,26,AlphaTauri,Russian Federation,3,202,112,0,2(x1),4,26/04/1994,"Ufa, Russia",2020
+Nico Hulkenberg,HUL,27,Racing Point,Germany,0,521,182,0,4(x3),1,19/08/1987,"Emmerich am Rhein, Germany",2020
+Kimi Raikkönen,RAI,7,Alfa Romeo,Finland,103,1863,332,1,1(x21),1,17/10/1979,"Espoo, Finland",2020
+Antonio Giovinazzi,GIO,99,Alfa Romeo,Italy,0,18,40,0,5(x1),7,14/12/1993,"Martina France, Italy",2020
+George Russell,RUS,63,Williams,United Kingdom,0,3,38,0,9(x1),2,15/02/1998,"King's Lynn, England",2020
+Romain Grosjean,GRO,8,Haas,France,10,391,181,0,2(x2),2,17/04/1986,"Geneva, Switzerland",2020
+Kevin Magnussen,MAG,20,Haas,Denmark,1,158,120,0,2(x1),4,05/10/1992,"Roskilde, Denmark",2020
+Nicholas Latifi,LAT,6,Williams,Canada,0,0,17,0,11(x3),15,29/06/1995,"Montreal, Canada",2020
+Jack Aitken,AIT,89,Williams,United Kingdom,0,0,1,0,16(x1),18,23/09/1995,"London, England",2020
+Pietro Fittipaldi,FIT,51,Haas,Brazil,0,0,2,0,17(x1),17,25/06/1996,"Miami, Florida",2020
+Lewis Hamilton,HAM,44,Mercedes,United Kingdom,151,3431,250,6,1(x84),1,07/07/1985,"Stevenage, England",2019
+Valtteri Bottas,BOT,77,Mercedes,Finland,45,1289,140,0,1(x7),1,28/08/1989,"Nastola, Finland",2019
+Max Verstappen,VER,33,Red Bull Racing,Netherlands,31,948,102,0,1(x8),1,30/09/1997,"Hasselt, Belgium",2019
+Charles Leclerc,LEC,16,Ferrari,Monaco,10,303,42,0,1(x2),1,16/10/1997,"Monte Carlo, Monaco",2019
+Sebastian Vettel,VET,5,Ferrari,Germany,120,2985,241,4,1(x53),1,03/07/1987,"Heppenheim, Germany",2019
+Carlos Sainz,SAI,55,McLaren,Spain,1,267,102,0,3(x1),5,01/09/1994,"Madrid, Spain",2019
+Pierre Gasly,GAS,10,Toro Rosso,France,1,124,47,0,2(x1),4,07/02/1996,"Rouen, France",2019
+Alexander Albon,ALB,23,Red Bull Racing,Thailand,0,92,21,0,4(x1),5,23/03/1996,"London, England",2019
+Daniel Ricciardo,RIC,3,Renault,Australia,29,1040,171,0,1(x7),1,01/07/1989,"Perth, Australia",2019
+Sergio Perez,PER,11,Racing Point,Mexico,8,581,178,0,2(x2),4,26/01/1990,"Guadalajara, Mexico",2019
+Lando Norris,NOR,4,McLaren,United Kingdom,0,49,21,0,6(x2),5,13/11/1999,"Bristol, England",2019
+Kimi Raikkönen,RAI,7,Alfa Romeo,Finland,103,1859,315,1,1(x21),1,17/10/1979,"Espoo, Finland",2019
+Daniil Kvyat,KVY,26,Toro Rosso,Russian Federation,3,170,95,0,2(x1),4,26/04/1994,"Ufa, Russia",2019
+Nico Hulkenberg,HUL,27,Renault,Germany,0,511,179,0,4(x3),1,19/08/1987,"Emmerich am Rhein, Germany",2019
+Lance Stroll,STR,18,Racing Point,Canada,1,67,62,0,3(x1),2,29/10/1998,"Montreal, Canada",2019
+Kevin Magnussen,MAG,20,Haas,Denmark,1,157,103,0,2(x1),4,05/10/1992,"Roskilde, Denmark",2019
+Antonio Giovinazzi,GIO,99,Alfa Romeo,Italy,0,14,23,0,5(x1),7,14/12/1993,"Martina Franca, Italy",2019
+Romain Grosjean,GRO,8,Haas,France,10,389,166,0,2(x2),2,17/04/1986,"Geneva, Switzerland",2019
+Robert Kubica,KUB,88,Williams,Poland,12,274,97,0,1(x1),1,07/12/1984,"Krakow, Poland",2019
+George Russell,RUS,63,Williams,United Kingdom,0,0,21,0,11(x1),14,15/02/1998,"King's Lynn, England",2019
