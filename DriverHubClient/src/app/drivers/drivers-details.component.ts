@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { DriverDetails } from './driversdetails';
 import { environment } from '../../environments/environment.development';
+import { Driver } from './drivers';
 
 @Component({
   selector: 'app-drivers-details',
@@ -34,8 +35,8 @@ export class DriversDetailsComponent implements OnInit {
         `${environment.baseUrl}/drivers/driverdetails/${this.id}`
       )
       .subscribe({
-        next: (result) => (this.DriverDetails = result),
-        error: (error) => console.error(error),
+        next: (result: DriverDetails[]) => this.DriverDetails = result,
+        error: (error: any) => console.error(error),
       });
   }
 }

@@ -1,34 +1,35 @@
 using System;
 using System.Collections.Generic;
+using DriverHubDatabase.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 
-namespace DriverHubDatabase;
+namespace DriverHubDatabase.Context;
 
-public partial class DriverHubContext : IdentityDbContext<AppUser>
+public partial class DriverHubDatabaseContext : IdentityDbContext<AppUser>
 {
-    public DriverHubContext() { }
+    public DriverHubDatabaseContext() {}
 
-    public DriverHubContext(DbContextOptions<DriverHubContext> options)
-          : base(options)
-    {
-    }
+    public DriverHubDatabaseContext(DbContextOptions<DriverHubDatabaseContext> options)
+          : base(options) {}
 
-    public virtual DbSet<Drivers> Drivers { get; set; }
+    public virtual DbSet<Drivers>? Drivers { get; set; }
 
-    public virtual DbSet<RaceResults> RaceResults { get; set; }
+    public virtual DbSet<RaceResults>? RaceResults { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        if (optionsBuilder.IsConfigured) { return; }
-        IConfigurationBuilder builder = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json", optional: false);
+        if (optionsBuilder.IsConfigured) return;
 
-        IConfigurationRoot configuration = builder.Build();
+        IConfiguration configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: false)
+            .Build();
 
-        optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+        optionsBuilder.UseSqlServer(
+            configuration.GetConnectionString("DefaultConnection"),
+            sqlServerOptions => sqlServerOptions.EnableRetryOnFailure());
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -59,7 +60,6 @@ public partial class DriverHubContext : IdentityDbContext<AppUser>
             entity.HasKey(e => e.RaceId);
             entity.Property(e => e.RaceId).ValueGeneratedNever();
             entity.Property(e => e.RaceName).IsRequired().HasMaxLength(50);
-            entity.Property(e => e.RaceDate).IsRequired();
             entity.Property(e => e.RacePosition).IsRequired();
             entity.Property(e => e.RaceTeam).IsRequired().HasMaxLength(50);
             entity.Property(e => e.RaceStartingGrid).IsRequired();
@@ -73,6 +73,6 @@ public partial class DriverHubContext : IdentityDbContext<AppUser>
                 .HasForeignKey(d => d.DriverID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_RaceResults_Drivers");
-        }
+        });
     }
 }

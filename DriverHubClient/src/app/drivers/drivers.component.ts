@@ -6,7 +6,6 @@ import { Driver } from './drivers';
 import { MockDriverService } from './drivers';
 import { routes } from '../app.routes';
 import { NgFor } from '@angular/common';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-drivers',
@@ -25,7 +24,6 @@ export class DriversComponent implements OnInit {
 
   constructor(
     private mockDriverService: MockDriverService,
-    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -56,9 +54,5 @@ export class DriversComponent implements OnInit {
         return 0;
       }
     });
-  }
-
-  navToDriverDetails(id: number) {
-    this.router.navigate(['/driverdetails', id]);
   }
 }

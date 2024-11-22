@@ -1,16 +1,17 @@
 using System;
 using System.Collections.Generic;
+using DriverHubDatabase;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace DriverHubDatabase
+namespace DriverHubDatabase.Entities
 {
     [Table("RaceResults")]
     public partial class RaceResults
     {
         [Column("DriverID")]
-        public int DriverID { get; set; } = null!;
+        public int DriverID { get; set; }
         
         [Key]
         [Column("RaceResultID")]

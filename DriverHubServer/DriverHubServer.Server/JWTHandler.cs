@@ -1,11 +1,12 @@
 using DriverHubDatabase;
+using DriverHubDatabase.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace DriverHubServer
+namespace DriverHubServer.Server
 {
         public class JwtHandler(IConfiguration configuration, UserManager<AppUser> userManager)
     {

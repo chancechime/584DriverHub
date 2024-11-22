@@ -10,12 +10,16 @@
         </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let driver of drivers; trackBy: trackByDriverId" (click)="navToDriverDetails(driver.id)" style="cursor: pointer;">
-      <td>{{ driver.abbreivation }}</td>
-      <td>{{ driver.driverNumber }} || {{ driver.driverName }}</td>
-      <td>{{ driver.team }}</td>
-      <td>{{ driver.points }}</td>
-      <td>{{ driver.worldChampionships }}</td>
-    </tr>
+        <ng-container *ngFor="let driver of drivers; trackBy: trackByDriverId">
+            <tr *ngIf="driver.id !== undefined && driver.id < drivers.length" 
+            [routerLink]="['/driver-details', driver.id]" style="cursor: pointer;">
+        [routerLink]="['/driver-details', driver.id]" style="cursor: pointer;">
+            <td>{{ driver.abbreivation }}</td>
+            <td>{{ driver.driverNumber }} || {{ driver.driverName }}</td>
+            <td>{{ driver.team }}</td>
+            <td>{{ driver.points }}</td>
+            <td>{{ driver.worldChampionships }}</td>
+        </tr>
+        </ng-container>
     </tbody>
 </table>

@@ -4,14 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace DriverHubDatabase
+namespace DriverHubDatabase.Entities
 {
     [Table("Drivers")]
-    public partial class Driver
+    public partial class Drivers
     {
         [Key]
         [Column("DriverID")]
-        public string DriverId { get; set; } = null!;
+        public int DriverId { get; set; }
 
         [Column("Abbreviation")]
         [MaxLength(3)]
