@@ -21,6 +21,9 @@ table {
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
+  tr{
+    pointer-events: auto;
+  }
 
   tr:nth-of-type(odd) {
     background-color: #ffffff;
@@ -34,12 +37,10 @@ table {
 
   tr:hover:nth-of-type(odd) {
     background-color: #a3e4a3ab;
-    cursor: pointer;
   }
 
   tr:hover:nth-of-type(even) {
     background-color: #ff9f3fb0;
-    cursor: pointer;
   }
 
   tr:last-of-type td {

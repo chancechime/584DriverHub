@@ -1,18 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NgModel } from '@angular/forms';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { RouterOutlet, Routes, RouterModule } from '@angular/router';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { HomeComponent } from './home/home.component';
-import { DriversComponent } from './drivers/drivers.component';
-import { RaceResultsComponent } from './race-results/race-results.component';
-import { FavoritesComponent } from './favorites/favorites.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavBarComponent],
+  imports: [RouterOutlet, CommonModule, NavBarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'DriverHubClient';
+
+  @ViewChild('myVideo') myVideo: any;
+
+  ngAfterViewInit() {
+    const videoElement = this.myVideo?.nativeElement;
+    if (videoElement) {
+      // Ensure video is muted and tries to play after view is initialized
+      videoElement.muted = true; // Ensure muted for autoplay
+      videoElement.play().catch(() => {
+        console.log('Autoplay failed, video may need user interaction.');
+      });
+    }
+  }
 }
+

@@ -1,18 +1,18 @@
 import { Component, OnInit, TrackByFunction } from '@angular/core';
-import { RouterLink, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { Driver } from './drivers';
 import { MockDriverService } from './drivers';
 import { routes } from '../app.routes';
-import { NgFor } from '@angular/common';
+import { NgFor, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-drivers',
   standalone: true,
-  imports: [NgFor, RouterModule],
+  imports: [NgFor, RouterModule, CommonModule],
   templateUrl: './drivers.component.html',
-  styleUrl: './drivers.component.scss',
+  styleUrls: ['./drivers.component.scss'],
 })
 export class DriversComponent implements OnInit {
   public drivers: Driver[] = [];
@@ -20,10 +20,11 @@ export class DriversComponent implements OnInit {
   public title = 'driverhubserver.client';
   private sortAscending: boolean = true;
   private lastSortedColumn: string = '';
-  public trackByDriverId: TrackByFunction<Driver> = (index, driver) => driver.id;
+  public trackByDriverId: TrackByFunction<Driver> = (_index, driver) => driver.id;
 
   constructor(
     private mockDriverService: MockDriverService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -40,7 +41,7 @@ export class DriversComponent implements OnInit {
     if (this.lastSortedColumn === column) {
       this.sortAscending = !this.sortAscending;
     } else {
-      this.sortAscending = true;
+      this.sortAscending = false;
       this.lastSortedColumn = column;
     }
 

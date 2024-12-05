@@ -1,21 +1,37 @@
 import { Component } from '@angular/core';
-import { RouterModule, RouterOutlet, RouterLink, Router } from '@angular/router';
+import { RouterModule, RouterLink, Router } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [RouterModule, MatToolbarModule, MatButtonModule, MatIconModule, MatDividerModule, RouterLink],
+  imports: [
+    RouterModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+    RouterLink,
+  ],
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss']
+  styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent {
-  // constructor(private router: Router) {}
-  // title = 'Driver Hub: Chance Chime';
-  // navigateTo(route: string) {
-  //   this.router.navigate([route]);
-  // }
+  isLoggedIn: boolean = false;
+
+  username: string = 'User';
+
+  constructor(private router: Router) {}
+
+  
+
+  // TODO: Find a way to get the username log in
+  onLogOut() {
+    localStorage.removeItem('LoginToken');
+    console.log('Logout successful');
+    window.location.reload();
+  }
 }

@@ -1,4 +1,4 @@
-.register{
+.login{
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -7,7 +7,15 @@
     text-decoration: underline;
     cursor: pointer;
 }
-.register:hover{
+.login:hover{
     color: #ffffff;
     font-size: calc(100% + 1px);
 }
+
+input:placeholder-shown {
+    color: gray;
+  }
+  
+  input:not(:placeholder-shown) {
+    color: black;
+  }

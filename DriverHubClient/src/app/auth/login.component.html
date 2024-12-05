@@ -15,8 +15,12 @@
         <div>
             <button mat-flat-button color="primary" type="submit">Login</button>
             <!-- Spacer -->
-            <span style="flex: 1 1 auto;"></span>
+            <span style="margin: 0 0.5em"></span>
             <button mat-flat-button color="secondary" [routerLink]="['/']">Cancel</button>
+        </div>
+        <span style="margin: 0 1.5em"></span>
+        <div> 
+            <a>Don't have an account?</a> <a [routerLink]="['/register']" class="register">Register here!</a>
         </div>
     </form>
   </div>

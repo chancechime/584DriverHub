@@ -31,9 +31,27 @@
       >Favorites</a
     >
     <div class="flex-spacer"></div>
-        <button mat-icon-button [routerLink] = "['/login']">
-          <mat-icon>account_circle</mat-icon>
-        </button>
+      @if (!isLoggedIn) {
+      <a style="font-size: calc(80%);">Howdy, {{ username }} </a>
+      <span style="margin: 1 1.0em"></span>
+      <button mat-icon-button>
+        <a
+          (click)="onLogOut()">
+          <mat-icon>account_circle</mat-icon></a
+        >
+      </button>
+    }
+    @else 
+    {
+      <a>User not logged in </a>
+      <button mat-icon-button> 
+        <a
+          [routerLink] = "['/login']"
+          style = "color: red; text-decoration: none"
+          ><mat-icon>no_accounts</mat-icon></a
+        >
+      </button>
+  }
   </mat-toolbar>
 </header>
 

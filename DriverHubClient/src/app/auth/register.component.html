@@ -1,0 +1,80 @@
+<div style="text-align: center" class="register">
+  <h1>Register</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>First Name:</mat-label>
+      <input
+        matInput
+        formControlName="firstName"
+        required="required"
+        placeholder="Enter First Name"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Last Name:</mat-label>
+      <input
+        matInput
+        formControlName="lastName"
+        required="required"
+        placeholder="Enter Last Name"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Username:</mat-label>
+      <input
+        matInput
+        formControlName="username"
+        required="required"
+        placeholder="Enter Username"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Email:</mat-label>
+      <input
+        matInput
+        formControlName="email"
+        required="required"
+        placeholder="Enter email"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Password:</mat-label>
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+        required="required"
+        placeholder="Enter password"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Confirm Password:</mat-label>
+      <input
+        matInput
+        type="password"
+        formControlName="confirmPassword"
+        required="required"
+        placeholder="Confirm password"
+      />
+    </mat-form-field>
+    <br />
+    <div>
+      <button mat-flat-button color="primary" type="submit">Register</button>
+      <!-- Spacer -->
+      <span style="margin: 0 0.5em"></span>
+      <button mat-flat-button color="secondary" [routerLink]="['/']">
+        Cancel
+      </button>
+    </div>
+    <span style="margin: 0 1.5em"></span>
+    <div>
+      <a>Already have an account?</a>
+      <a [routerLink]="['/login']" class="login">Login Here!</a>
+    </div>
+  </form>
+</div>

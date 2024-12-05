@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { DriverService } from '../drivers/driver.service';
+import { MockDriverService } from '../drivers/drivers';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -8,7 +9,10 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DriverDetailGuard implements CanActivate {
-  constructor(private driverService: DriverService, private router: Router) {}
+  constructor(
+    private router: Router,
+    private mockDriverService: MockDriverService  // Ensure this is the correct service
+  ) {}
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     const id = route.paramMap.get('id');
@@ -19,15 +23,16 @@ export class DriverDetailGuard implements CanActivate {
       return of(false);
     }
 
-    return this.driverService.isDriverIdValid(driverId).pipe(
-      tap((exists) => {
+    // Fetch the drivers and check if the provided driverId exists
+    return this.mockDriverService.getDrivers().pipe(
+      map(drivers => drivers.some(driver => driver.id === driverId)),
+      tap(exists => {
         if (!exists) {
-          this.router.navigate(['/drivers']);
+          this.router.navigate(['/drivers']);  // Redirect if driver ID does not exist
         }
       }),
-      map(exists => exists),
       catchError(() => {
-        this.router.navigate(['/drivers']);
+        this.router.navigate(['/drivers']);  // Handle errors and redirect
         return of(false);
       })
     );

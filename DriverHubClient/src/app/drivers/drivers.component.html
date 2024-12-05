@@ -1,25 +1,31 @@
-<h1 style="text-align: center;">Drivers</h1>
+<h1 style="text-align: center">Drivers</h1>
 <table class="table table-striped" aria-labelledby="tableLabel">
-    <thead>
-        <tr>
-            <th (click)="sort('abbreivation')">Abbr.</th>
-            <th (click)="sort('driverName')">Driver</th>
-            <th (click)="sort('team')">Team</th>
-            <th (click)="sort('points')">Points</th>
-            <th (click)="sort('worldChampionships')">World Championships</th>
-        </tr>
-    </thead>
-    <tbody>
-        <ng-container *ngFor="let driver of drivers; trackBy: trackByDriverId">
-            <tr *ngIf="driver.id !== undefined && driver.id < drivers.length" 
-            [routerLink]="['/driver-details', driver.id]" style="cursor: pointer;">
-        [routerLink]="['/driver-details', driver.id]" style="cursor: pointer;">
-            <td>{{ driver.abbreivation }}</td>
-            <td>{{ driver.driverNumber }} || {{ driver.driverName }}</td>
-            <td>{{ driver.team }}</td>
-            <td>{{ driver.points }}</td>
-            <td>{{ driver.worldChampionships }}</td>
-        </tr>
-        </ng-container>
-    </tbody>
+  <thead>
+    <tr>
+      <th (click)="sort('abbreviation')" style="cursor: pointer">Abbr.</th>
+      <th (click)="sort('driverName')" style="cursor: pointer">Driver</th>
+      <th (click)="sort('team')" style="cursor: pointer">Team</th>
+      <th (click)="sort('points')" style="cursor: pointer">Points</th>
+      <th (click)="sort('worldChampionships')" style="cursor: pointer">
+        World Championships
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let driver of drivers; trackBy: trackByDriverId">
+      <tr [routerLink]="['/driver-details', driver.id]" style="cursor: pointer">
+        <td>{{ driver.abbreviation }}</td>
+        <td>
+          <ng-container *ngIf="driver.driverNumber < 10; else showNumber">
+            &nbsp;&nbsp;{{ driver.driverNumber }}
+          </ng-container>
+          <ng-template #showNumber>{{ driver.driverNumber }}</ng-template>
+          | {{ driver.driverName }}
+        </td>
+        <td>{{ driver.team }}</td>
+        <td>{{ driver.points }}</td>
+        <td>{{ driver.worldChampionships }}</td>
+      </tr>
+    </ng-container>
+  </tbody>
 </table>

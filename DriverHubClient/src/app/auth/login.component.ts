@@ -42,7 +42,12 @@ export class LoginComponent implements OnInit {
       next: result => {
         loginResponse = result;
         console.log(loginResponse);
-        },
+        if (result.success) {
+          localStorage.setItem('LoginToken', result.token);
+          console.log('Login successful');
+        }  
+      
+      },
       error: e => console.error(e)
     });
 
