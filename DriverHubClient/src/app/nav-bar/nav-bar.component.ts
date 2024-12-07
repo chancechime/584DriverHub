@@ -1,9 +1,16 @@
 import { Component } from '@angular/core';
-import { RouterModule, RouterLink, Router } from '@angular/router';
+import {
+  RouterModule,
+  RouterLink,
+  Router,
+  ActivatedRoute,
+} from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { Subject, takeUntil } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -20,18 +27,31 @@ import { MatDividerModule } from '@angular/material/divider';
   styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent {
-  isLoggedIn: boolean = false;
+  isloggedIn: boolean = false;
+  private destorySubject = new Subject();
 
-  username: string = 'User';
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    authService.authStatus
+      .pipe(takeUntil(this.destorySubject))
+      .subscribe((result) => {
+        this.isloggedIn = result;
+      });
+  }
 
-  constructor(private router: Router) {}
-
-  
-
-  // TODO: Find a way to get the username log in
   onLogOut() {
     localStorage.removeItem('LoginToken');
     console.log('Logout successful');
-    window.location.reload();
+    this.refreshRoute();
+  }
+
+  refreshRoute() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 }

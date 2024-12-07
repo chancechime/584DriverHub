@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
         if (result.success) {
           localStorage.setItem('LoginToken', result.token);
           console.log('Login successful');
+          this.router.navigate(['/']);
         }  
       
       },
@@ -62,5 +63,5 @@ export class LoginComponent implements OnInit {
   
   form!: UntypedFormGroup;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 }
