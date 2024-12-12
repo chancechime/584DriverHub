@@ -30,6 +30,8 @@ import { AuthService } from './auth.service';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
+  constructor(private authService: AuthService, private router: Router) {}
+
   onSubmit(): void {
     var loginRequest: LoginRequest = {
       username: this.form.controls['username'].value,
@@ -42,8 +44,10 @@ export class LoginComponent implements OnInit {
       next: result => {
         loginResponse = result;
         console.log(loginResponse);
-        if (result.success) {
+        if (!result.success) {
           localStorage.setItem('LoginToken', result.token);
+          this.authService.setUsername("Chance");
+          // this.authService.setUsername(loginRequest.username); for actual implmentation
           console.log('Login successful');
           this.router.navigate(['/']);
         }  
@@ -62,6 +66,4 @@ export class LoginComponent implements OnInit {
   }
   
   form!: UntypedFormGroup;
-
-  constructor(private authService: AuthService, private router: Router) {}
 }

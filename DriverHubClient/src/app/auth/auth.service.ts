@@ -12,11 +12,20 @@ import { tap, BehaviorSubject } from 'rxjs';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
+  private username: string | null = null;
   private _authStatus = new BehaviorSubject<boolean>(false);
   public authStatus = this._authStatus.asObservable();
 
   private isAuthenticated(): boolean {
     return localStorage.getItem('LoginToken') != null;
+  }
+  
+  setUsername(username: string): void {
+    this.username = username;
+  }
+
+  getUsername(): string| null{
+    return this.username;
   }
 
   getToken(): string | null {

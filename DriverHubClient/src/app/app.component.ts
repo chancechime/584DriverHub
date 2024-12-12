@@ -1,6 +1,5 @@
-import { NgModel } from '@angular/forms';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { RouterOutlet, Routes, RouterModule } from '@angular/router';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { CommonModule } from '@angular/common';
 
@@ -9,22 +8,26 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterOutlet, CommonModule, NavBarComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements AfterViewInit {
   title = 'DriverHubClient';
 
-  @ViewChild('myVideo') myVideo: any;
+  @ViewChild('myVideo', { static: true }) myVideo!: ElementRef<HTMLVideoElement>;
 
-  ngAfterViewInit() {
-    const videoElement = this.myVideo?.nativeElement;
-    if (videoElement) {
-      // Ensure video is muted and tries to play after view is initialized
-      videoElement.muted = true; // Ensure muted for autoplay
-      videoElement.play().catch(() => {
-        console.log('Autoplay failed, video may need user interaction.');
-      });
-    }
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      const videoElement = this.myVideo?.nativeElement;
+
+      if (videoElement && typeof videoElement.play === 'function') {
+        videoElement.muted = true; // Ensure muted for autoplay
+        videoElement.play().catch((err) => {
+          console.warn('Autoplay failed:', err);
+        });
+      } else {
+        console.error('Video element is not properly initialized or does not support play().');
+      }
+    }, 0);
   }
+  
 }
-

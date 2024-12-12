@@ -28,6 +28,7 @@ import { AuthService } from '../auth/auth.service';
 })
 export class NavBarComponent {
   isloggedIn: boolean = false;
+  username: string = '';
   private destorySubject = new Subject();
 
   constructor(
@@ -40,6 +41,10 @@ export class NavBarComponent {
       .subscribe((result) => {
         this.isloggedIn = result;
       });
+  }
+
+  getUserName() {
+    this.username = this.authService.getUsername() ?? 'User';
   }
 
   onLogOut() {

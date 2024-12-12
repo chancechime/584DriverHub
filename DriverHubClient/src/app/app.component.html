@@ -1,8 +1,17 @@
 <app-nav-bar></app-nav-bar>
 
-<video autoplay muted playsinline disablePictureInPicture controlsList="nodownload" id="myVideo">
-    <source src="f1-new-bg-vid.mp4" type="video/mp4">
-    Your browser does not support HTML5 video.
+<video
+  #myVideo
+  id="myVideo"
+  playsinline
+  autoplay
+  muted
+  loop
+  disablePictureInPicture
+  controlsList="nodownload"
+>
+  <source src="f1-new-bg-vid.mp4" type="video/mp4">
+  Your browser does not support the video tag.
 </video>
 
 <router-outlet></router-outlet>
