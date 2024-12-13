@@ -15,6 +15,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from './auth.service';
+import myAppConfig from './config/my-app-config';
+import OktaSignIn from '@okta/okta-signin-widget';
+import { OktaAuthStateService } from '@okta/okta-angular';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +33,22 @@ import { AuthService } from './auth.service';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) {}
+
+  oktaSignIn: any;
+
+  constructor(private authService: AuthService, private router: Router, private oktaAuthStateService: OktaAuthStateService) {
+    // this.oktaSignIn = new OktaSignIn({
+    //   baseUrl: myAppConfig.oidc.issuer.split('/oauth2')[0],
+    //   clientId: myAppConfig.oidc.clientId,
+    //   redirectUri: myAppConfig.oidc.redirectUri,
+    //   authParams: {
+    //     pkce: true,
+    //     issuer: myAppConfig.oidc.issuer,
+    //     display: 'page',
+    //     scopes: myAppConfig.oidc.scopes,
+    //   },
+    // });
+  }
 
   onSubmit(): void {
     var loginRequest: LoginRequest = {
@@ -46,7 +64,7 @@ export class LoginComponent implements OnInit {
         console.log(loginResponse);
         if (!result.success) {
           localStorage.setItem('LoginToken', result.token);
-          this.authService.setUsername("Chance");
+          this.authService.setUsername("User");
           // this.authService.setUsername(loginRequest.username); for actual implmentation
           console.log('Login successful');
           this.router.navigate(['/']);

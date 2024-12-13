@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DriverHubDatabase.Migrations
 {
     [DbContext(typeof(DriverHubDatabaseContext))]
-    [Migration("20241117052358_InitialDBSetup")]
-    partial class InitialDBSetup
+    [Migration("20241213171617_SyncWithDatabase")]
+    partial class SyncWithDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -169,7 +169,7 @@ namespace DriverHubDatabase.Migrations
 
                     b.HasKey("DriverId");
 
-                    b.ToTable("Drivers");
+                    b.ToTable("Drivers", (string)null);
                 });
 
             modelBuilder.Entity("DriverHubDatabase.Entities.RaceResults", b =>
@@ -231,7 +231,7 @@ namespace DriverHubDatabase.Migrations
 
                     b.HasIndex("DriverID");
 
-                    b.ToTable("RaceResults");
+                    b.ToTable("RaceResults", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

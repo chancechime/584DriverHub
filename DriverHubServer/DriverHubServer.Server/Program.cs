@@ -1,91 +1,97 @@
 using DriverHubServer.Server;
 using DriverHubDatabase.Context;
 using DriverHubDatabase.Entities;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.SqlServer;
-using Microsoft.AspNetCore.Authentication.BearerToken;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using Microsoft.OpenApi.Models;
 using DotNetEnv;
+using System.Text;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-
-Env.Load("../../.env");
-builder.Configuration["ConnectionStrings:DefaultConnection"] = Environment.GetEnvironmentVariable("DEFAULT_CONNECTION");
-// dotnet ef database update --project ../DriverHubDatabase
-
-// Add services to the container.
-
+// Add services to the container
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c => {
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new()
+    {
+        Contact = new()
+        {
+            Email = "bob@notbob.net",
+            Name = "bob",
+            Url = new("https://canvas.csun.edu/courses/128137")
+        },
+        Description = "APIs for World Cities",
+        Title = "World Cities APIs",
+        Version = "V1"
+    });
+    OpenApiSecurityScheme jwtSecurityScheme = new()
     {
         Scheme = "bearer",
         BearerFormat = "JWT",
-        Name = "Authorization",
+        Name = "JWT Authentication",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.Http,
-        Description = "JWT Authorization header using the Bearer scheme."
-    });
-
+        Description = "Please enter *only* JWT token",
+        Reference = new OpenApiReference
+        {
+            Id = JwtBearerDefaults.AuthenticationScheme,
+            Type = ReferenceType.SecurityScheme
+        }
+    };
+    c.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, jwtSecurityScheme);
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
-            },
-            new List<string>()
-        }
+        { jwtSecurityScheme, [] }
     });
 });
-    
-builder.Services.AddDbContext<DriverHubDatabaseContext>(
-    (options) =>
-    {
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-    });
 
-builder.Services.AddIdentity<AppUser, IdentityRole>() // function that adds identity dependency injection.
-    .AddEntityFrameworkStores<DriverHubDatabaseContext>(); // function that adds the entity framework store to the identity.
+// Configure DbContext
+builder.Services.AddDbContext<DriverHubDatabaseContext>(options =>
+{
+    string? connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    if (string.IsNullOrEmpty(connectionString))
+    {
+        throw new InvalidOperationException("DefaultConnection is not configured in appsettings or environment variables.");
+    }
+    options.UseSqlServer(connectionString);
+});
+
+// Add Identity
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+    .AddEntityFrameworkStores<DriverHubDatabaseContext>();
+
+// Add JWT Authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["JwtSettings:Issuer"],
+        ValidAudience = builder.Configuration["JwtSettings:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
+            builder.Configuration["JwtSettings:SecurityKey"] ?? throw new InvalidOperationException("JWT SecurityKey is not set.")
+        ))
+    };
+});
 
 builder.Services.AddScoped<JwtHandler>();
 
-builder.Services.AddAuthentication(
-    (options) =>
-    {
-        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-
-    }).AddJwtBearer(
-    (options) =>
-    {
-        options.TokenValidationParameters = new() // howdy
-        {
-            RequireAudience = true,
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateIssuerSigningKey = true, // others ^ dont matter with this one
-            ValidIssuer = builder.Configuration["JwtSettings:Issuer"],
-            ValidAudience = builder.Configuration["JwtSettings:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
-            .GetBytes(builder.Configuration["JwtSettings:SecurityKey"]!))
-        };
-    });
-
 WebApplication app = builder.Build();
 
+// Middleware
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -94,10 +100,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
 app.MapFallbackToFile("/index.html");
 
 app.Run();

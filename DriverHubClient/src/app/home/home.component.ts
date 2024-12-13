@@ -11,6 +11,7 @@ import { isPlatformBrowser, CommonModule } from '@angular/common';
 })
 export class HomeComponent implements AfterViewInit {
   // Declare the variable to hold the current platform status
+  
   isBrowser: boolean = false;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private renderer: Renderer2) {

@@ -9,6 +9,7 @@ using DriverHubServer.Data;
 using DriverHubDatabase.Context;
 using DriverHubDatabase.Entities;
 using Microsoft.AspNetCore.Authorization;
+using DriverHubServer.DTO;
 
 namespace Driver.Server.Controllers
 {
@@ -21,16 +22,24 @@ namespace Driver.Server.Controllers
         // GET: api/Drivers
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<IEnumerable<Drivers>>> GetCountries()
+        public async Task<ActionResult<IEnumerable<Drivers>>> GetDrivers()
         {
+            if (_context.Drivers == null)
+            {
+                return NotFound();
+            }
             return await _context.Drivers.ToListAsync();
         }
 
-        // GET: api/Countries/5
+        // GET: api/Drivers/5
         [HttpGet("{id}")]
         [Authorize]
         public async Task<ActionResult<Drivers>> GetDriver(int id)
         {
+            if (_context.Drivers == null)
+            {
+                return NotFound();
+            }
             var drivers = await _context.Drivers.FindAsync(id);
 
             if (drivers == null)
@@ -44,8 +53,12 @@ namespace Driver.Server.Controllers
         // GET: api/DriverDetails/5
         [HttpGet("driver-details/{id}")]
         [Authorize]
-        public async Task<ActionResult<Drivers>> GetCountryPopulation(int id)
+        public async Task<ActionResult<DriverDetails>> GetDriverDetails(int id)
         {
+            if (_context.Drivers == null)
+            {
+                return NotFound();
+            }
             Drivers? driver = await _context.Drivers.FindAsync(id);
 
             if (driver == null)
@@ -53,31 +66,44 @@ namespace Driver.Server.Controllers
                 return NotFound();
             }
 
-
-
-            int raceResults = await _context.RaceResults.Where(x => x.DriverId == id).Select(x => x.Result).SumAsync();
-
-            DriverDetails driverdetials = new()
+            int raceResults = 0;
+            if (_context.RaceResults != null)
             {
-                Id = driver.Id,
-                Name = driver.Name,
-                Population = raceResults
+                raceResults = (int)(await _context.RaceResults.Where(x => x.DriverID == id).Select(x => x.RacePoints).SumAsync() ?? 0);
+            }
+
+            DriverDetails driverdetails = new()
+            {
+                Id = driver.DriverId,
+                Abbreviation = driver.Abbreviation ?? string.Empty,
+                DriverName = driver.DriverName ?? string.Empty,
+                DriverNumber = driver.DriverNumber ?? 0,
+                Team = driver.DriverTeam ?? string.Empty,
+                Podiums = driver.DriverPodiums ?? 0,
+                Points = (int)(driver.DriverPoints ?? 0),
+                GrandPrixEntered = driver.DriverGPEntered ?? 0,
+                WorldChampionships = driver.DriverChampionships ?? 0,
+                HighestRaceFinish = driver.DriverHIRaceFinish ?? 0,
+                HighestGridPosition = driver.DriverHIGridPos ?? 0,
+                DateOfBirth = driver.DateOfBirth?.ToString("yyyy-MM-dd") ?? string.Empty,
+                PlaceOfBirth = driver.PlaceOfBirth ?? string.Empty,
+                SeasonYear = driver.SeasonYear?.Year ?? 0
             };
 
-            return countrypopulation;
+            return driverdetails;
         }
 
-        // PUT: api/Countries/5
+        // PUT: api/Drivers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCountry(int id, Country country)
+        public async Task<IActionResult> PutDriver(int id, Drivers driver)
         {
-            if (id != country.Id)
+            if (id != driver.DriverId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(country).State = EntityState.Modified;
+            _context.Entry(driver).State = EntityState.Modified;
 
             try
             {
@@ -85,7 +111,7 @@ namespace Driver.Server.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CountryExists(id))
+                if (!DriverExists(id))
                 {
                     return NotFound();
                 }
@@ -98,36 +124,45 @@ namespace Driver.Server.Controllers
             return NoContent();
         }
 
-        // POST: api/Countries
+        // POST: api/Drivers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Country>> PostCountry(Country country)
+        public async Task<ActionResult<Drivers>> PostDriver(Drivers driver)
         {
-            _context.Countries.Add(country);
+            if (_context.Drivers == null)
+            {
+                return Problem("Entity set 'DriverHubDatabaseContext.Drivers'  is null.");
+            }
+            _context.Drivers.Add(driver);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCountry", new { id = country.Id }, country);
+            return CreatedAtAction("GetDriver", new { id = driver.DriverId }, driver);
         }
 
-        // DELETE: api/Countries/5
+        // DELETE: api/Drivers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCountry(int id)
+        public async Task<IActionResult> DeleteDrivers(int id)
         {
-            var country = await _context.Countries.FindAsync(id);
-            if (country == null)
+            if (_context.Drivers == null)
             {
                 return NotFound();
             }
 
-            _context.Countries.Remove(country);
+            var driver = await _context.Drivers.FindAsync(id);
+            if (driver == null)
+            {
+                return NotFound();
+            }
+
+            _context.Drivers.Remove(driver);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool CountryExists(int id)
+        private bool DriverExists(int id)
         {
-            return _context.Countries.Any(e => e.Id == id);
+            return _context.Drivers != null && _context.Drivers.Any(e => e.DriverId == id);
         }
     }
 }

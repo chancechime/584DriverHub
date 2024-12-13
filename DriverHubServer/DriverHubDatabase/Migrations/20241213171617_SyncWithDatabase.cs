@@ -6,35 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DriverHubDatabase.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialDBSetup : Migration
+    public partial class SyncWithDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Drivers",
-                columns: table => new
-                {
-                    DriverID = table.Column<int>(type: "int", nullable: false),
-                    Abbreviation = table.Column<string>(type: "varchar(3)", unicode: false, maxLength: 3, nullable: false),
-                    Driver = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
-                    NO = table.Column<byte>(type: "tinyint", nullable: false),
-                    Team = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
-                    Country = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
-                    Podiums = table.Column<int>(type: "int", nullable: false),
-                    Points = table.Column<float>(type: "real", nullable: false),
-                    GrandsPrixEntered = table.Column<int>(type: "int", nullable: false),
-                    WorldChampionships = table.Column<int>(type: "int", nullable: false),
-                    HighestRaceFinish = table.Column<int>(type: "int", nullable: false),
-                    HighestGridPosition = table.Column<int>(type: "int", nullable: false),
-                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PlaceOfBirth = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
-                    SeasonYear = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Drivers", x => x.DriverID);
-                });
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -72,6 +48,31 @@ namespace DriverHubDatabase.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Drivers",
+                columns: table => new
+                {
+                    DriverID = table.Column<int>(type: "int", nullable: false),
+                    Abbreviation = table.Column<string>(type: "varchar(3)", unicode: false, maxLength: 3, nullable: false),
+                    Driver = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
+                    NO = table.Column<byte>(type: "tinyint", nullable: false),
+                    Team = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    Country = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    Podiums = table.Column<int>(type: "int", nullable: false),
+                    Points = table.Column<float>(type: "real", nullable: false),
+                    GrandsPrixEntered = table.Column<int>(type: "int", nullable: false),
+                    WorldChampionships = table.Column<int>(type: "int", nullable: false),
+                    HighestRaceFinish = table.Column<int>(type: "int", nullable: false),
+                    HighestGridPosition = table.Column<int>(type: "int", nullable: false),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PlaceOfBirth = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    SeasonYear = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Drivers", x => x.DriverID);
                 });
 
             migrationBuilder.CreateTable(

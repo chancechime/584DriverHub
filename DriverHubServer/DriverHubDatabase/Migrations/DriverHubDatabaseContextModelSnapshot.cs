@@ -166,7 +166,7 @@ namespace DriverHubDatabase.Migrations
 
                     b.HasKey("DriverId");
 
-                    b.ToTable("Drivers");
+                    b.ToTable("Drivers", (string)null);
                 });
 
             modelBuilder.Entity("DriverHubDatabase.Entities.RaceResults", b =>
@@ -228,7 +228,7 @@ namespace DriverHubDatabase.Migrations
 
                     b.HasIndex("DriverID");
 
-                    b.ToTable("RaceResults");
+                    b.ToTable("RaceResults", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

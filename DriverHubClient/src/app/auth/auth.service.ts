@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { LoginRequest } from './login-request';
 import { LoginResponse } from './login-response';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { tap, BehaviorSubject } from 'rxjs';
 
@@ -26,6 +26,10 @@ export class AuthService {
 
   getUsername(): string| null{
     return this.username;
+  }
+
+  loginWithRedirect(): void {
+    window.location.href = `${environment.baseUrl}/api/Admin/Login`;
   }
 
   getToken(): string | null {

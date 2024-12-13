@@ -1,7 +1,8 @@
 import { Component, OnInit, TrackByFunction } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 import { Driver } from './drivers';
 import { MockDriverService } from './drivers';
 import { routes } from '../app.routes';
@@ -23,18 +24,19 @@ export class DriversComponent implements OnInit {
   public trackByDriverId: TrackByFunction<Driver> = (_index, driver) => driver.id;
 
   constructor(
-    private mockDriverService: MockDriverService,
+    private http: HttpClient,
     private router: Router,
   ) {}
 
   ngOnInit(): void {
-    this.mockDriverService.getDrivers().subscribe((data: Driver[]) => {
-      this.drivers = data;
-    });
+    this.getDrivers();
   }
 
-  getDrivers(): Observable<Driver[]> {
-    return of(this.drivers);
+  getDrivers() {
+    this.http.get<Driver[]>(`${environment.baseUrl}/api/Driver`).subscribe({
+      next: result => this.drivers = result,
+      error: e => console.error(e)
+    });
   }
 
   sort(column: string) {

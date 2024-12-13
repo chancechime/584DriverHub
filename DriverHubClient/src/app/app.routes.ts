@@ -9,6 +9,7 @@ import { LoginComponent } from './auth/login.component';
 import { RegisterComponent } from './auth/register.component';
 import { AppComponent } from './app.component';
 import { DriverDetailGuard } from './guards/drivers-details.guard';
+import { OktaAuthGuard } from '@okta/okta-angular';
 
 export const routes: Routes = [
     { path: 'register', component: RegisterComponent},
@@ -17,7 +18,7 @@ export const routes: Routes = [
     { path: 'driver-details/:id', component: DriversDetailsComponent},
     { path: 'race-results', component: RaceResultsComponent },
     { path: 'favorites', component: FavoritesComponent },
-    { path: 'home', component: HomeComponent },
+    { path: 'home', component: HomeComponent, canActivate: [OktaAuthGuard] },
     { path: '', redirectTo: 'home', pathMatch: 'full'},
     { path: '**', redirectTo: '/drivers' }
 ];

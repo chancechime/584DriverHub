@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { DriverDetails } from './driversdetails';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 import { Driver } from './drivers';
 import { MockDriverService } from './drivers';
 import { Observable, of } from 'rxjs';
