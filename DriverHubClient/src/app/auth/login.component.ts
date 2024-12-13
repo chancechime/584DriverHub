@@ -16,7 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from './auth.service';
 import myAppConfig from './config/my-app-config';
-import OktaSignIn from '@okta/okta-signin-widget';
+// import OktaSignIn from '@okta/okta-signin-widget';
 import { OktaAuthStateService } from '@okta/okta-angular';
 
 @Component({
